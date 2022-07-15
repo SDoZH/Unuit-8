@@ -8,12 +8,8 @@ namespace Unuit_8
     {
         public static void Main()
         {
-            var fileInfo = new FileInfo("/Users/Dzh/source/repos/Unuit 8/Unuit 8/Program.cs"); // Укажем путь
+            var fileInfo = new FileInfo("/Users/Dzh/Desktop/BinaryFile.bin"); // Укажем путь
 
-            using (StreamWriter sw = fileInfo.AppendText())
-            {
-                sw.WriteLine($"Время запуска: {DateTime.Now}");
-            }
                 // Откроем файл и прочитаем его содержимое
                 using (StreamReader sr = fileInfo.OpenText())
                 {
