@@ -11,6 +11,7 @@ namespace Unuit_8
             static void Main(string[] args)
             {
                 GetCatalogs(); //   Вызов метода получения директорий
+                Console.WriteLine();
                 Sum(); //колличество файлов в корне
             }
             static void Sum()
@@ -20,7 +21,7 @@ namespace Unuit_8
                     DirectoryInfo dirInfo = new DirectoryInfo(@"/" /* Или С:\\ для Windows */ );
                     if (dirInfo.Exists)
                     {
-                        Console.WriteLine(dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
+                        Console.WriteLine("На вашем диске {0} директорий/и", dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
                     }
                 }
                 catch (Exception e)
