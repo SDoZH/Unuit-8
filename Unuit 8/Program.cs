@@ -23,6 +23,10 @@ namespace Unuit_8
                     {
                         Console.WriteLine("На вашем диске {0} директорий/и", dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
                     }
+                    DirectoryInfo newDirectory = new DirectoryInfo(@"/Тестовая папка");
+                    if (!newDirectory.Exists)
+                        newDirectory.Create();
+                    Console.WriteLine("На вашем диске {0} директорий/и", dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
                 }
                 catch (Exception e)
                 {
