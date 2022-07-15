@@ -13,6 +13,8 @@ namespace Unuit_8
                 GetCatalogs(); //   Вызов метода получения директорий
                 Console.WriteLine();
                 Sum(); //колличество файлов в корне
+                Console.WriteLine();
+                Delete();
             }
             static void Sum()
             {
@@ -31,6 +33,19 @@ namespace Unuit_8
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
+                }
+            }
+            static void Delete()
+            {
+                try
+                {
+                    DirectoryInfo dirInfo = new DirectoryInfo(@"/Тестовая папка"); //выбор директории для удаления
+                    dirInfo.Delete(true); // Удаление со всем содержимым
+                    Console.WriteLine("Чистота чисто тайд");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
             static void GetCatalogs()
