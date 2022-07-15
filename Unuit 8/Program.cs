@@ -4,68 +4,17 @@ namespace Unuit_8
 {
     using System;
     using System.IO;
-    namespace DriveManager
+    class FileWriter
     {
-        class Program
+        public static void Main()
         {
-            static void Main(string[] args)
+            string filePath = @"\Users\Dzh\source\repos\Unuit 8\Unuit 8\Program.cs"; // Укажем путь
+            // Откроем файл и прочитаем его содержимое
+            using (StreamReader sr = File.OpenText(filePath))
             {
-                GetCatalogs(); //   Вызов метода получения директорий
-                Console.WriteLine();
-                Sum(); //колличество файлов в корне
-                Console.WriteLine();
-                Delete();
-            }
-            static void Sum()
-            {
-                try
-                {
-                    DirectoryInfo dirInfo = new DirectoryInfo(@"/" /* Или С:\\ для Windows */ );
-                    if (dirInfo.Exists)
-                    {
-                        Console.WriteLine("На вашем диске {0} директорий/и", dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
-                    }
-                    DirectoryInfo newDirectory = new DirectoryInfo(@"/Тестовая папка");
-                    if (!newDirectory.Exists)
-                        newDirectory.Create();
-                    Console.WriteLine("На вашем диске {0} директорий/и", dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-            }
-            static void Delete()
-            {
-                try
-                {
-                    DirectoryInfo dirInfo = new DirectoryInfo(@"/Тестовая папка"); //выбор директории для удаления
-                    dirInfo.Delete(true); // Удаление со всем содержимым
-                    Console.WriteLine("Чистота чисто тайд");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-            static void GetCatalogs()
-            {
-                string dirName = @"/"; // Прописываем путь к корневой директории MacOS (для Windows скорее всего тут будет "C:\\")
-                if (Directory.Exists(dirName)) // Проверим, что директория существует
-                {
-                    Console.WriteLine("Папки:");
-                    string[] dirs = Directory.GetDirectories(dirName);  // Получим все директории корневого каталога
-
-                    foreach (string d in dirs) // Выведем их все
-                        Console.WriteLine(d);
-
-                    Console.WriteLine();
-                    Console.WriteLine("Файлы:");
-                    string[] files = Directory.GetFiles(dirName);// Получим все файлы корневого каталога
-
-                    foreach (string s in files)   // Выведем их все
-                        Console.WriteLine(s);
-                }
+                string str = "";
+                while ((str = sr.ReadLine()) != null)
+                    Console.WriteLine(str);
             }
         }
     }
