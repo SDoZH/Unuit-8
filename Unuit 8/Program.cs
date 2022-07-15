@@ -11,8 +11,23 @@ namespace Unuit_8
             static void Main(string[] args)
             {
                 GetCatalogs(); //   Вызов метода получения директорий
+                Sum(); //колличество файлов в корне
             }
-
+            static void Sum()
+            {
+                try
+                {
+                    DirectoryInfo dirInfo = new DirectoryInfo(@"/" /* Или С:\\ для Windows */ );
+                    if (dirInfo.Exists)
+                    {
+                        Console.WriteLine(dirInfo.GetDirectories().Length + dirInfo.GetFiles().Length);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
             static void GetCatalogs()
             {
                 string dirName = @"/"; // Прописываем путь к корневой директории MacOS (для Windows скорее всего тут будет "C:\\")
